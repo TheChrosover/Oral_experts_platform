@@ -1,0 +1,418 @@
+{% extends 'pacientes/base.html' %}
+
+
+{% block titulo %}Endodoncia{% endblock %}
+
+{% block especialidades-activo %}active{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+<h1 class="h3 mb-2 text-gray-800">Paciente: {{ itemPaciente }}</h1><br>
+ <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Consulta Rehabilitación Oral N°</h6>
+                        </div>
+                        <div class="card-body">
+                        <form class="user" method="POST">
+                                <div class="form-group">
+                                <div>
+                                                    <br><h3>Aspectos generales </h3><br>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Fecha de la rehabilitación oral </label>
+                                                        <input type="date" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Fecha de la endodoncia</label>
+                                                        <input type="date" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <br><h4>Aspectos personales </h4>
+                                                    <br><h5>Fisiológicos</h5>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Nacimiento </label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Lactancia</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Desarrollo </label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Habitos</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Tabaco</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Fecha de la endodoncia</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+
+                                                    <br><h5>Patológicos</h5><br>
+                                                    <div class="form-row ">
+                                                        <div class="form-group col-md">
+                                                        <label>Enfermedades Eruptivas</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Enfermedades Sistemicas</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Transfusiones</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Alergias</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Intervenciones Quirurgicas</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Infecciones</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Hospitalizaciones</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Otros</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+
+                                                    <br><h4>Antecedentes familiares</h4>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Padre</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Madre</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Hermanos</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Conyuge</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Hijos</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+
+                                                    <br><h4>Antecedentes Socioeconomicos</h4>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Vivienda</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Agua</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Luz</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Animales</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+
+                                                     <br><h4>Evaluación Sistemica</h4>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Piel</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Sistema Linfatico</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Sistema Motor</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Sistema Oseo Articular</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Sistema Nervioso</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>SAparato Circulatorio</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Aparato Respiratorio</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Aparato Digestivo</label>
+                                                         <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Aparato Urinario</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Organos de los sentidos</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+
+                                                    <br><h4>Examen Físico General</h4>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Posición y Actitud</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Deambulación</label>
+                                                         <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Fascies</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Psiquis</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Constitución, Estado Nutritivo</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Piel y Faneras</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Pulso</label>
+                                                         <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Respiración</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Temperatura</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Presión Arterial</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Peso</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Talla</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+
+                                                     <br><h4>Examen Físico Regional</h4>
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Cabeza</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Cara</label>
+                                                         <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Cuello</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Labios</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+
+                                                    <br><h4>Articulación Temporo Mandibular (ATM)</h4>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Movimiento de Apertura</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Movimiento de Cierre</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Hipertrofia Muscular</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Movimiento Lateral Derecha</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Movimiento Lateral Izquierda</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Ruidos Articulares y Chasquidos</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+
+                                                    <br><h4>Dolor a la Palpación</h4>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Maseteros</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Temporales</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Pteriogoideos Externos</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Pteriogoideos Internos</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Digastricos</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Suprahioides</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Esternocleidomastoideos</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Musculos Posteriores del Cuello</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+
+                                                    <br><h4>Intraoral</h4>
+                                                    <div class="form-group">
+                                                        <div class="form-group">
+                                                        <label>Labios</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                        <div class="form-group">
+                                                        <label>Vestibulos y Fonde de Surco</label>
+                                                        <input type="text" class="form-control" >
+                                                        </div>
+                                                    </div>
+
+                                                    <br><h5>Diagnóstico Presuntivo</h5>
+                                                     <div class="form-group">
+                                                        <div class="form-group">
+                                                        <label>Clínico</label>
+                                                        <textarea class="form-control" id="" rows="2"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-group">
+                                                        <label>Radiografico</label>
+                                                        <textarea class="form-control" id="" rows="2"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-group">
+                                                        <label>Fotografico</label>
+                                                        <textarea class="form-control" id="" rows="2"></textarea>
+                                                        </div>
+                                                    </div>
+
+                                                    <h4>Diagnóstico Definitivo</h4>
+                                                    <div class="form-group">
+                                                        <div class="form-group">
+                                                        <textarea class="form-control" id="" rows="2"></textarea>
+                                                        </div>
+                                                    </div>
+
+                                                    <h4>Plan de Tratamiento</h4>
+                                                    <div class="form-group">
+                                                        <div class="form-group">
+                                                        <textarea class="form-control" id="" rows="2"></textarea>
+                                                        </div>
+                                                    </div><br>                                                   
+                        <button type="submit" class="btn btn-primary btn-user btn-block">Guardar</button>
+                    </form>
+                    </div>
+                    </div>
+                        </div>
+</div>
+</div>
+{% endblock %}

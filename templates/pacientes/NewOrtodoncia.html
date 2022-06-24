@@ -1,0 +1,631 @@
+{% extends 'pacientes/base.html' %}
+
+
+{% block titulo %}Ortodoncía{% endblock %}
+
+{% block especialidades-activo %}active{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+<h1 class="h3 mb-2 text-gray-800">Paciente: {{ itemPaciente }}</h1><br>
+ <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Ortodoncia</h6>
+                        </div>
+                        <div class="card-body">
+                        <form class="user" method="POST">
+                                <div class="form-group">
+                                  
+                                <div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Fecha de la ortodoncia</label>
+                                                        {{dOrtoFecha.cSobremordida}}
+                                                        </div>
+                                                    </div>
+                                                    <br><h3>Análisis Facial</h3>
+                                                    <h5>Patron Facial:</h5>
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Mesofacial</label>
+                                                        {{  frmOrtodoncia.cSobremordida}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Dolico Facial</label>
+                                                        {{  frmOrtodoncia.cSobremordida}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Branqui Facial</label>
+                                                        {{ frmOrtodoncia.cBraquiFacial}}
+                                                        </div>
+                                                    </div>
+                                                    <br><h5>Perfil</h5>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Recto</label>
+                                                        {{ frmOrtodoncia.cRectoPerfil}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Convexo</label>
+                                                        {{ frmOrtodoncia.cConcavoPerfil}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Convexo</label>
+                                                        {{ frmOrtodoncia.cConvexoPerfil}}
+                                                        </div>
+                                                    </div>
+                                                    <br><h5>Asimetría</h5>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Mandíbula Derecha</label>
+                                                        {{ frmOrtodoncia.cMandDerecha}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Mandíbula Izquierda</label>
+                                                        {{ frmOrtodoncia.cMandIzquierda}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Otros</label>
+                                                        {{ frmOrtodoncia.cOtras}}
+                                                        </div>
+                                                    </div>
+                                                    <br><h5>Altura Facial</h5>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Equilibrada</label>
+                                                        {{ frmOrtodoncia.cEquilibradaAltura}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Larga</label>
+                                                        {{ frmOrtodoncia.cLargaAltura}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Corta</label>
+                                                        {{ frmOrtodoncia.cCortaAltura}}
+                                                        </div>
+                                                    </div>
+                                                    <br><h5>Ancho Facial</h5>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Equilibrada</label>
+                                                       {{ frmOrtodoncia.cEquilibradaAncho}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Estrecho</label>
+                                                        {{ frmOrtodoncia.cEstrechoAncho}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Amplio</label>
+                                                        {{ frmOrtodoncia.cAmplioAncho}}
+                                                        </div>
+                                                    </div>
+                                                    <br><h5>Perfil Maxilar</h5>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Ortognatico</label>
+                                                        {{ frmOrtodoncia.cOrtognaticoMaxi}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Prognatico</label>
+                                                        {{ frmOrtodoncia.cPrognaticoMaxi}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Retrognatico</label>
+                                                        {{ frmOrtodoncia.cRetrognaticoMaxi}}
+                                                        </div>
+                                                    </div>
+                                                    <br><h5>Perfil Madibular</h5>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Ortognatico</label>
+                                                        {{ frmOrtodoncia.OrtognaticoMandi}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Prognatico</label>
+                                                        {{ frmOrtodoncia.PrognaticoMandi}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Retrognatico</label>
+                                                        {{ frmOrtodoncia.RetrognaticoMandi}}
+                                                        </div>
+                                                    </div>
+                                                    <br><h5>Surco Labio-Menton</h5>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Normal</label>
+                                                        {{ frmOrtodoncia.cNormalSurco}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        {% comment %} <label>Prognatico</label>
+                                                        {{ frmOrtodoncia.cBorradoSurco}}
+                                                        </div> {% endcomment %}
+                                                        <div class="form-group col-md">
+                                                        <label>Borrado</label>
+                                                        {{ frmOrtodoncia.cBorradoSurco}}
+                                                        </div>
+                                                    </div>
+                                                    <br><h5>Labios en Reposo</h5>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Competentes</label>
+                                                        {{ frmOrtodoncia.cCompetentReposo}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Incompetentes</label>
+                                                        {{ frmOrtodoncia.cIncompetentReposo}}
+                                                        </div>
+                                                    </div>
+                                                    <br><h5>Perfil Labial</h5>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Protusivo</label>
+                                                        {{ frmOrtodoncia.cProtusivoLabial}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Sup</label>
+                                                        {{ frmOrtodoncia.cSupLabialprot}}
+                                                        </div>
+                                                         <div class="form-group col-md">
+                                                        <label>Inf</label>
+                                                        {{ frmOrtodoncia.cInfLabialprot}}
+                                                        </div>
+                                                         <div class="form-group col-md">
+                                                        <label>Retrusivos</label>
+                                                        {{ frmOrtodoncia.cRetrusivosLabial}}
+                                                        </div>
+                                                         <div class="form-group col-md">
+                                                        <label>Sup</label>
+                                                        {{ frmOrtodonciacSupLabialrtr}}
+                                                        </div>
+                                                         <div class="form-group col-md">
+                                                        <label>Inf</label>
+                                                        {{ frmOrtodoncia.cInfLabialrtr}}
+                                                        </div>
+                                                         <div class="form-group col-md">
+                                                        <label>Normal</label>
+                                                        {{ frmOrtodoncia.cNormalLabial}}
+                                                        </div>
+                                                    </div>
+                                                    <br><h3>Análisis Funcional</h3>
+                                                    <br><h5>Respiración</h5>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Bucal</label>
+                                                        {{ frmOrtodoncia.cBucalRespi}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Nasal</label>
+                                                        {{ frmOrtodoncia.cNasalRespi}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Mixta</label>
+                                                        {{ frmOrtodoncia.cMixtaRespi}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Deglucion Normal</label>
+                                                        {{ frmOrtodoncia.cDeglucionN}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Deglucion Atitpica</label>
+                                                        {{ frmOrtodoncia.cDeglucionA}}
+                                                        </div>
+                                                    </div>
+                                                    <br><h5>Actividad Comisural</h5>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Normal</label>
+                                                        {{ frmOrtodoncia.cNormalComisural}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Contracción</label>
+                                                        {{ frmOrtodoncia.cContraccComisural}}
+                                                        </div>
+                                                    </div>
+                                                    <br><h5>Actividad Lingual</h5>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Normal</label>
+                                                        {{ frmOrtodoncia.cNormalAct}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Interp. Anterior</label>
+                                                        {{ frmOrtodoncia.cInterpAnterior}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Interp. Lateral</label>
+                                                        {{ frmOrtodoncia.cInterpLateral}}
+                                                        </div>
+                                                    </div>
+                                                    <br><h5>Labio Superior</h5>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Normal</label>
+                                                        {{ frmOrtodoncia.cNormalLabioSup}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Hipoactivo</label>
+                                                        {{ frmOrtodoncia.cHipoactivLabioSup}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Hiperactivo</label>
+                                                        {{ frmOrtodoncia.cHiperactivLavioSup}}
+                                                        </div>
+                                                    </div>
+                                                    <br><h5>Labio Inferior</h5>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Normal</label>
+                                                        {{ frmOrtodoncia.cNormalLabioInfe}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Hipoactivo</label>
+                                                        {{ frmOrtodoncia.cHipoactivLabioInf}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Hiperactivo</label>
+                                                        {{ frmOrtodoncia.ccHiperactivLabioInf}}
+                                                        </div>
+                                                    </div>
+                                                    <br><h5>Masetero</h5>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Normal</label>
+                                                        {{ frmOrtodoncia.cNormalMaset}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Hipoactivo</label>
+                                                        {{ frmOrtodoncia.cHipoactivo}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Hiperactivo</label>
+                                                        {{ frmOrtodoncia.cHiperactivo}}
+                                                        </div>
+                                                    </div>
+                                                    <br><h5>Mentoniano</h5>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Normal</label>
+                                                        {{ frmOrtodoncia.cNormalMenton}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Hipoactivo</label>
+                                                        {{ frmOrtodoncia.cHipoactivoMenton}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Hiperactivo</label>
+                                                        {{ frmOrtodoncia.cHiperactivoMenton}}
+                                                        </div>
+                                                    </div>
+                                                    <br><h5>Mentoniano</h5>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Dedos</label>
+                                                        {{ frmOrtodoncia.cDedosMenton}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Lengua</label>
+                                                        {{ frmOrtodoncia.cLenguaMenton}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Labios</label>
+                                                        {{ frmOrtodoncia.cLabiosMenton}}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Onicofagia</label>
+                                                        {{ frmOrtodoncia.cOnicofagiaMenton}}
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-row">
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                                <tr>
+                                                                <th scope="col-2">Cefalograma de ricketts</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody align="center">
+                                                                <tr>
+                                                                    <td>Max.Inferior</td>
+                                                                    <td>Norma</td>
+                                                                    <td>Inicial</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>1. Eje Facial</td>
+                                                                    <td>90º +- 3,0º</td>
+                                                                    <td>{{ frmOrtodoncia.cEjeFacial}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>2. Prof Facial</td>
+                                                                    <td>87º +- 3,0º</td>
+                                                                    <td>{{ frmOrtodoncia.cProFacial}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>3. Angl. PL. Mandib.</td>
+                                                                    <td>26º +- 4,0º</td>
+                                                                    <td>{{ frmOrtodoncia.cAnglPlMandib}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>4. Altura Fac. Inf</td>
+                                                                    <td>47º +- 4,0º</td>
+                                                                    <td>{{ frmOrtodoncia.cAlturaFacInf}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>5. Arco Mandib</td>
+                                                                    <td>26º +- 4,0º</td>
+                                                                    <td>{{ frmOrtodoncia.cArcoMandib}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Max Superior</td>
+                                                                    <td></td>
+                                                                    <td>{{ frmOrtodoncia.cMaxSuperior}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>6. Convexidad Facial</td>
+                                                                    <td>+2</td>
+                                                                    <td>{{ frmOrtodoncia.cConvexFacial}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>7. Prof. Maxilar</td>
+                                                                    <td>90º+-3,0º</td>
+                                                                    <td>{{ frmOrtodoncia.cProfMaxilar}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Dientes</td>
+                                                                    <td></td>
+                                                                    <td>{{ frmOrtodoncia.cDientes}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>8. Incisivo inf a A-PO</td>
+                                                                    <td>+1º</td>
+                                                                    <td>{{ frmOrtodoncia.cIncisivoInfAPO}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>9. Inclinacion incis. inf</td>
+                                                                    <td>22º+-4,0º</td>
+                                                                    <td>{{ frmOrtodoncia.cInclinaIncisInf}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>10. 1er molar sup PTV</td>
+                                                                    <td>edad +3</td>
+                                                                    <td>{{ frmOrtodoncia.c1erMolarSupPTV}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>11. Incis. Inf. A PL.O.</td>
+                                                                    <td>Thornton</td>
+                                                                    <td>{{ frmOrtodoncia.cIncisInfAPLO}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>12. Angulo Interinc.</td>
+                                                                    <td>130º+-10º</td>
+                                                                    <td>{{ frmOrtodoncia.cAnguloInterInc}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Perf. Blando</td>
+                                                                    <td></td>
+                                                                    <td>{{ frmOrtodoncia.cPerfBlando}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>13. Prot. Labio inf.</td>
+                                                                    <td>-2+-2mm</td>
+                                                                    <td>{{ frmOrtodoncia.cProtLabioInf}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                                <tr>
+                                                                <th scope="col">Cefalograma MCC Namara</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody align="center">
+                                                                <tr>
+                                                                    <td>Medida</td>
+                                                                    <td>Norma</td>
+                                                                    <td>Paciente</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Vert-A</td>
+                                                                    <td>0 mm +- 1 mm</td>
+                                                                    <td>{{ frmOrtodoncia.cVertA}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Vert - PO</td>
+                                                                    <td>-8 a 6/ -4 a 0</td>
+                                                                    <td>{{ frmOrtodoncia.cVertPO}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Normas Compuestas</td>
+                                                                    <td>{{ frmOrtodoncia.cNormasCompstNorma}}</td>
+                                                                    <td>{{ frmOrtodoncia.cNormasCompstPac}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Long. Maxilar</td>
+                                                                    <td>{{ frmOrtodoncia.cLongMaxilarNorma}}</td>
+                                                                    <td>{{ frmOrtodoncia.cLongMaxilarPac}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Long. Mandibular</td>
+                                                                    <td>{{ frmOrtodoncia.cLongMandibNorma}}</td>
+                                                                    <td>{{ frmOrtodoncia.cLongMandibPac}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Altura</td>
+                                                                    <td>{{ frmOrtodoncia.cAlturaNorma}}</td>
+                                                                    <td>{{ frmOrtodoncia.cAlturaPac}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center" colspan="3"><h5>Análisis Esqueletal</h5></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="3">{{ frmOrtodoncia.cAnalisis}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                                <tr>
+                                                                <th scope="col">Determinación del tipo facial</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody align="center">
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <p align="center">Vert</p>
+                                                                        <p align="center">Mesofacial 0 Braqui + 0.5 Braqui Severo + 1</p>
+                                                                        <p align="center">Dolico Suave - 0.5 Dolico - 1 Dolico Severo - 2</p>
+                                                                    </td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Análisis de Arcos Dentarios<S/td>
+                                                                    <td>Descripción de maloclusión</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Discrepancia Dentaria mm.</td>
+                                                                    <td>{{ frmOrtodoncia.cDiscreDentariamm}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Espacio Libre (Nance) mm.</td>
+                                                                    <td>{{ frmOrtodoncia.cEspcLibreNancemm}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Discrepancia Cefalom. mm.r</td>
+                                                                    <td>{{ frmOrtodoncia.cDiscreTFCefalomm}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Total mm.</td>
+                                                                    <td>{{ frmOrtodoncia.cTotalTFmm}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <br>
+                                                      <div class="form-row">
+                                                        <table class="table table-bordered">
+                                                            <thead align="center">
+                                                                <tr>
+                                                                <th scope="col">Planificación de V.T.O</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                        <td>V.T.O</td>
+                                                                        <td>1. APO</td>
+                                                                        <td colspan="2"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td>+</td>
+                                                                        <td>-</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>1 - Eje Facial</td>
+                                                                    <td>Discrepancia dentaria</td>
+                                                                    <td>{{ frmOrtodoncia.cEjefacialmas}}</td>
+                                                                    <td>{{ frmOrtodoncia.cEjefacialmenos}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    
+                                                                    <td>{{ frmOrtodoncia.cVTOEjeFacial}}</td>
+                                                                    <td>Espacio Libre(Nance)</td>
+                                                                    <td>{{ frmOrtodoncia.cConvexidadmas}}</td>
+                                                                    <td>{{ frmOrtodoncia.cConvexidadmenos}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>2 - Convexidad</td>
+                                                                    <td>D.C.R.C</td>
+                                                                    <td>{{ frmOrtodoncia.cVertMoralMas}}</td>
+                                                                    <td>{{ frmOrtodoncia.cVertMoralMas}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>{{ frmOrtodoncia.cConvexidad}}</td>
+                                                                    <td>EVertilizacion Moral</td>
+                                                                    <td>{{ frmOrtodoncia.cVertMoralMas}}</td>
+                                                                    <td>{{ frmOrtodoncia.cVertMoralMenos}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>3 - 1 a A - PO</td>
+                                                                    <td>Curva de Spee</td>
+                                                                    <td>{{ frmOrtodoncia.c1aAPOMas}}</td>
+                                                                    <td>{{ frmOrtodoncia.c1aAPOMenos}}</td>
+                                                                </tr>
+                                                                <!--alv es una chucha xd-->
+                                                                 <tr>
+                                                                    <td>{{ frmOrtodoncia.c1aAPO}}</td>
+                                                                    <td>Expanción</td>
+                                                                    <td>{{ frmOrtodoncia.cExpacionMas}}</td>
+                                                                    <td>{{ frmOrtodoncia.cExpacionMenos}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>4 - Angulo Interincisivo</td>
+                                                                    <td>Elasticos Intermaxilares</td>
+                                                                    <td>{{ frmOrtodoncia.cAglInterMas}}</td>
+                                                                    <td>{{ frmOrtodoncia.cAglInterMenos}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>{{ frmOrtodoncia.cAnguloInterincis}}</td>
+                                                                    <td>Desgaste Interproximal</td>
+                                                                    <td>{{ frmOrtodoncia.cDesgInterMas}}</td>
+                                                                    <td>{{ frmOrtodoncia.cDesgInterMenos}}</td>
+                                                                </tr>
+                                                                 <tr>
+                                                                    <td>5 - Labio Inferior - Plano E</td>
+                                                                    <td>Extraccion</td>
+                                                                    <td>{{ frmOrtodoncia.cLInfMas}}</td>
+                                                                    <td>{{ frmOrtodoncia.cLinfMenos}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>Recolocacion de 1</td>
+                                                                    <td>{{ frmOrtodoncia.cReloc1Mas}}</td>
+                                                                    <td>{{ frmOrtodoncia.cReloc1Menos}}</td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>Total</td>
+                                                                    <td>{{ frmOrtodoncia.cTotalApoMas}}</td>
+                                                                    <td>{{ frmOrtodoncia.cTotalApoMenos}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>Neto</td>
+                                                                    <td>{{ frmOrtodoncia.cNetoApoMas}}</td>
+                                                                    <td>{{ frmOrtodoncia.cNetoApoMenos}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>Por hemiarcada</td>
+                                                                    <td>{{ frmOrtodoncia.cPorHemiMas}}</td>
+                                                                    <td>{{ frmOrtodoncia.cPorHemiMenos}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Plan de tratamiento y objetivos</label>
+                                                        {{ frmOrtodoncia.tOrtoPlanTrat}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Tecnica y aparotología a emplear</label>
+                                                        {{ frmOrtodoncia.tOrtoTecnicApar}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Tiempo estimado del tratamiento</label>
+                                                        {{ frmOrtodoncia.cOrtoTiempoTrat}}
+                                                        </div>
+                                                    </div>
+                        <button type="submit" class="btn btn-primary btn-user btn-block">Guardar</button>
+                    </form>
+                        </div>
+ </div>
+ </div>
+{% endblock %}

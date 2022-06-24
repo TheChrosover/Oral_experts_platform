@@ -1,0 +1,117 @@
+{% extends 'pacientes/base.html' %}
+
+
+{% block titulo %}Nuevo Usuario{% endblock %}
+
+{% block registrar-activo %}active{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+<h1 class="h3 mb-2 text-gray-800">Paciente: {{ itemPaciente }}</h1><br>
+ <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Perfil del Paciente</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-auto">
+                                    <div class="form-group col-md">
+                                     <form class="user" method="POST">
+                                    {% csrf_token %}
+                                    <center><img class="rounded-circle border border-primary" alt="100x100" src="{{ itemPaciente.iPacImg.url }}" width="150px" data-holder-rendered="true">
+                                    </center><br>
+
+                                    </div>
+                                    </div>
+                                    <div class="col-md">
+
+                                                                    <div class="form-group">
+                                                                        <div class="form-group">
+                                                                        <label>Nombres y Apellidos</label>
+                                                                        {{ formEditarPaciente.cPacNombres}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-8">
+                                                                        <label>Correo electrónico</label>
+                                                                        {{ formEditarPaciente.cPacEmail }}
+                                                                        </div>
+                                                                        <div class="form-group col-md">
+                                                                        <label>DNI</label>
+                                                                        {{ formEditarPaciente.nPacDni }}
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-6">
+                                                                        <label>Dirección</label>
+                                                                        {{ formEditarPaciente.cPacDireccion }}
+                                                                        </div>
+                                                                        <div class="form-group col-md-6">
+                                                                        <label>Código postal</label>
+                                                                        {{ formEditarPaciente.nPacCodPostal }}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-4">
+                                                                        <label>Ciudad de nacimiento</label>
+                                                                        {{ formEditarPaciente.cPacCiudadNacimiento }}
+                                                                        </div>
+                                                                        <div class="form-group col-md-4">
+                                                                        <label>Fecha de nacimiento</label>
+                                                                        {{ formEditarPaciente.dPacFecNacimiento }}
+                                                                        </div>
+                                                                        <div class="form-group col-md-4">
+                                                                        <label >Sexo</label>
+                                                                        {{ formEditarPaciente.cPacSexo }}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-6">
+                                                                        <label >Ocupación</label>
+                                                                        {{ formEditarPaciente.cPacOcupacion }}
+                                                                        </div>
+                                                                        <div class="form-group col-md-4">
+                                                                        <label>Estado civil</label>
+                                                                        {{ formEditarPaciente.cPacEstadoCivil }}
+                                                                        </div>
+                                                                        <div class="form-group col-md-2">
+                                                                        <label for="inputZip">Teléfono/celular</label>
+                                                                        {{formEditarPaciente.nPacCelTlf }}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-4">
+                                                                        <label>Procedencia</label>
+                                                                        {{ formEditarPaciente.cPacNombres }}
+                                                                        </div>
+                                                                        <div class="form-group col-md-4">
+                                                                        <label>Grado de estudios</label>
+                                                                        {{ formEditarPaciente.cPacNombres }}
+                                                                        </div>
+                                                                        <div class="form-group col-md-4">
+                                                                        <label>Alergias</label>
+                                                                        {{ formEditarPaciente.cPacNombres }}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-8">
+                                                                        <label>Nombres y apellidos del acompañante</label>
+                                                                        {{ formEditarPaciente.cNombresApoderado }}
+                                                                        </div>
+                                                                        <div class="form-group col-md-4">
+                                                                        <label>Teléfono del acompañante</label>
+                                                                        {{ formEditarPaciente.nTelfApoderado }}
+                                                                        </div>
+                                                                    </div>                     
+                                        
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">Guardar</button>
+                                    </form>
+                                    </div>
+                                </div>
+                                </div>
+                        </div>
+</div>
+</div>
+{% endblock %}

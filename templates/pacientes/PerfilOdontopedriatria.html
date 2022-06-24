@@ -1,0 +1,249 @@
+{% extends 'pacientes/base.html' %}
+
+{% block titulo %}Odontopedriatría{% endblock %}
+
+{% block especialidades-activo %}active{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+<h1 class="h3 mb-2 text-gray-800">Paciente: {{ itemPaciente  }}</h1><br>
+ <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Consulta Ondontopedriatría N°</h6>
+                        </div>
+                        <div class="card-body">
+                            <form class="user" method="POST">
+                            {% csrf_token %}
+                                <div class="form-group">
+                                <div>
+                                                    <br>
+                                                    <h3>Aspectos generales </h3>
+                                                    <br>
+                                                    <div class="form-group">
+                                                        <div class="form-group">
+                                                        <label>Fecha</label>
+                                                         {{ frmOdPediatria.dOPedFecha }}
+                                                        </div>
+                                                    </div>
+                                                      <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Motivo de Consulta</label>
+                                                        {{ frmOdPediatria.tOpedMotivo }}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Enfermedad Actual</label>
+                                                        {{ frmOdPediatria.tHistEnfermeAct }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>¿Tiene tratamiento médico?</label>
+                                                         {{ frmOdPediatria.bOPedTratMedico }}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>¿Cuando fue su ulltima consulta?</label>
+                                                         {{ frmOdPediatria.cOpedUltima }}
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Antecedentes familiares</label>
+                                                         {{ frmOdPediatria.tAnteFam }}
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <h3>Antecedentes odontológicos </h3>
+                                                    <br>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label >Tratamiento anterior</label>
+                                                         {{ frmOdPediatria.tTratAnt }}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Higiene Oral </label>
+                                                        {{ frmOdPediatria.tHigieneOral }}
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Hábitos bucales deletéreos</label>
+                                                        {{ frmOdPediatria.tHabitosDeletereos }}
+                                                        </div>
+                                                    </div>
+                                                     <br><h3>Comportamiento general</h3><br>
+                                                     {% comment %} <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Comportamiento general</label>
+                                                        {{ frmOdPediatria.cOpedConViveNino }}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Rendimiento escolar</label>
+                                                        {{ frmOdPediatria.dOdontGeneralFecha }}
+                                                        </div>
+                                                    </div>  {% endcomment %}
+
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Reacción TTO</label>
+                                                        {{ frmOdPediatria.cOpedActitudPadresTto }}
+                                                        </div>
+
+                                                        <div class="form-group col-md">
+                                                        <label>¿Con quien vive?</label>
+                                                        {{ frmOdPediatria.cOpedConViveNino }}
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-row">
+                                                        
+                                                        <div class="form-group col-md">
+                                                        <label>¿Quien cuida al niño?</label>
+                                                        {{ frmOdPediatria.cOpedQuienCuidaNino }}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Nivel educativo de los padres?</label>
+                                                        {{ frmOdPediatria.cOpedNivelEducPadres }}
+                                                        </div>
+                                                    </div>
+                                                      <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Observaciones</label>
+                                                        {{ frmOdPediatria.tOpedObservaciones }}
+                                                        </div>
+                                                    </div>
+                                                    <br><h4>Examen Extraoral </h4><br>
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Frente</label>
+                                                        {{FrmOdonPedExamenExtraOral.cFrente }}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Perfil</label>
+                                                        {{FrmOdonPedExamenExtraOral.cPerfil }}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Nariz</label>
+                                                        {{FrmOdonPedExamenExtraOral.cNariz }}
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Labios</label>
+                                                        {{FrmOdonPedExamenExtraOral.cLabios }}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>ATM</label>
+                                                        {{FrmOdonPedExamenExtraOral.cATM }}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Anedopatías</label>
+                                                        {{FrmOdonPedExamenExtraOral.cAdenopatias }}
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Otros</label>
+                                                        {{FrmOdonPedExamenExtraOral.cOtros }}
+                                                        </div>
+                                                    </div>
+                                                    <br><h4>Examen Intraoral</h4><br>
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Orofaringe</label>
+                                                        {{FrmOdonPedExamenIntraOral.cOrofaringe }}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Paladar</label>
+                                                        {{FrmOdonPedExamenIntraOral.cPaladar }}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Encias</label>
+                                                        {{FrmOdonPedExamenIntraOral.cEncias }}
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Lengua</label>
+                                                        {{FrmOdonPedExamenIntraOral.cLengua }}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Mucosas</label>
+                                                        {{FrmOdonPedExamenIntraOral.cMucosas }}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Piso de boca</label>
+                                                        {{FrmOdonPedExamenIntraOral.cBoca }}
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Frenillos</label>
+                                                        {{FrmOdonPedExamenIntraOral.cFrenillos }}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Otros</label>
+                                                        {{FrmOdonPedExamenIntraOral.cOtros }}
+                                                        </div>
+                                                    </div>
+                                                    <br><h4>Examen de Oclusión</h4><br>
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Relación Molar</label>
+                                                        {{FrmOdonPedExamenOclusion.cRelaciMolar }}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Relación Canina</label>
+                                                        {{FrmOdonPedExamenOclusion.cRelaciCanina }}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Apiñamiento</label>
+                                                        {{FrmOdonPedExamenOclusion.cApinamiento }}
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Sobremordida</label>
+                                                        {{FrmOdonPedExamenOclusion.cSobremordida }}
+                                                        </div>
+                                                        <div class="form-group col-md">
+                                                        <label>Relación transversal:</label>
+                                                        {{FrmOdonPedExamenOclusion.cRelacitrans }}
+                                                        </div>
+                                                    </div>
+                                                   
+                                                    <br><h3>Exámenes complementario</h3><br>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Exámenes de laboratorio</label>
+                                                        {{FrmOdonPedOtrosExamen.tExaCompLab }}
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Examanes Radiograficos</label>
+                                                        {{FrmOdonPedOtrosExamen.tExaCompRadiografico }}
+                                                        </div>
+
+                                                        <div class="form-group col-md">
+                                                        <label>Diagnostico definitivo</label>
+                                                        {{FrmOdonPedOtrosExamen.tOPedDiagDef }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                            <label>Plan de tratamiento</label>
+                                                            {{ frmOdPediatriaPlan.cNombre }}
+                                                        </div>
+                                                    {% comment %} <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Remisiones</label>
+                                                        {{ frmOdPediatria.dOdontGeneralFecha }}
+                                                    </div> {% endcomment %}
+                                                    </div>
+                        <button type="submit" class="btn btn-primary btn-user btn-block">Guardar</button>
+                    </form>
+                        </div>
+</div>
+</div>
+{% endblock %}

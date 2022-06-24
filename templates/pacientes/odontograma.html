@@ -1,0 +1,1089 @@
+{% extends 'pacientes/base.html' %}
+
+{% block titulo %}|Imágenes{% endblock %}
+
+{% block imagenes-activo %}active{% endblock %}
+{% load static %}
+{% block body %}
+
+<style>
+@media (min-width: 1440px) { 
+    .card-body{
+      flex: 1 1 auto;
+      min-height: 1px;
+      padding: 2.25rem;
+  }
+}
+@media (min-width: 1400px) { 
+    .card-body{
+      flex: 1 1 auto;
+      min-height: 1px;
+      padding: 2.25rem;
+  }
+}
+@media (min-width: 1366px) { 
+    .card-body{
+      flex: 1 1 auto;
+      min-height: 1px;
+      padding: 2.25rem;
+  }
+}
+@media (min-width: 1600px) { 
+    .card-body{
+      flex: 1 1 auto;
+      min-height: 1px;
+      padding: 1.25rem;
+  }
+}
+
+@media (min-width: 1280px) { 
+    .card-body{
+      flex: 1 1 auto;
+      min-height: 1px;
+      padding: 1.25rem;
+  }
+}
+</style>
+<!--Moda leyenda-->
+<div class="modal fade" id="leyenda" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"/>
+  <div class="modal-dialog modal-lg" role="document"/>
+    <div class="modal-content"/>
+      <div class="modal-header"/>
+        <h5 class="modal-title" id="exampleModalLabel"/>Nomenclaturas de las lesiones</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"/>
+          <span aria-hidden="true"/>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body"/>
+        <div class="table-responsive"/>
+          <table class="table table-bordered" width="100%" cellspacing="0"/>
+            <thead>
+              <tr>
+                <th scope="col"/>#</th>
+                <th scope="col"/>Lesión</th>
+                <th scope="col" colspan="7"/>Nomenclatura(s)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"/>1</th>
+                <td style="color:#cc0000; font-weight: bold;"/>Lesión de caries dental </td>
+                <td><b>MB:</b> Mancha blanca </td>
+                <td><b>CE:</b> Lesión de caries dental a nivel del esmalte </td>
+                <td><b>CD:</b> Lesión de caries dental a nivel de la dentina </td>
+                <td colspan="3"/><b>CDP:</b> Lesión de caries dental a nivel de la dentina/compromiso de la pulpa</td>
+              </tr>
+              <tr>
+                <th scope="row"/>2</th>
+                <td style="color:#cc0000; font-weight: bold;"/>Defectos de desarrollo del esmalte DDE</td>
+                <td><b>HP:</b> Hipoplasia</td>
+                <td><b>HM:</b> Hipo mineralización</td>
+                <td><b>O:</b> Opacidades del esmalte</td>
+                <td><b>D:</b> Decoloración del esmalte</td>
+                <td colspan="2"/>Fluorosis</td>
+              </tr>
+              <tr>
+                <th scope="row"/>3</th>
+                <td style="font-weight: bold;"/>Restauración definitiva </td>
+                <td><b>AM:</b> Amalgama dental</td>
+                <td><b>R:</b> Resina</td>
+                <td><b>IV:</b> Ionómero de vidrio</td>
+                <td><b>IM:</b> Incrustación metálica</td>
+                <td><b>IE:</b> Incrustación estética</td>
+                <td><b>C:</b> Carilla estética</td>
+              </tr>
+              <tr>
+                <th scope="row"/>4</th>
+                <td style="color:#094293; font-weight: bold;"/>Posición Dentaria </td>
+                <td><b>M:</b> Mesializado</td>
+                <td><b>V:</b> Vestibularizado</td>
+                <td><b>P:</b> Palatinizado</td>
+                <td colspan="3"/><b>L:</b> Lingualizado</td>
+              </tr>
+              <tr>
+                <th scope="row"/>5</th>
+                <td style="color:#094293; font-weight: bold;"/>Macrodoncia</td>
+                <td colspan="6"/><b>MAC</b></td>
+              </tr>
+              <tr>
+                <th scope="row"/>6</th>
+                <td style="color:#094293; font-weight: bold;"/>Microdoncia</td>
+                <td colspan="6"/><b>MIC</b></td>
+              </tr>
+              <tr>
+                <th scope="row"/>7</th>
+                <td style="color:#094293; font-weight: bold;"/>Impactación</td>
+                <td colspan="6"/><b>I</b></td>
+              </tr>
+              <tr>
+                <th scope="row"/>8</th>
+                <td style="color:#cc0000; font-weight: bold;"/>Superficie desgastada</td>
+                <td colspan="6"/><b>DES</b></td>
+              </tr>
+              <tr>
+                <th scope="row"/>9</th>
+                <td style="color:#cc0000; font-weight: bold;"/>Superficie radicular</td>
+                <td colspan="6"/><b>RR</b></td>
+              </tr>
+              <tr>
+                <th scope="row"/>10</th>
+                <td style="color:#cc0000; font-weight: bold;"/>Movilidad patológica</td>
+                <td colspan="6"/><b>M</b></td>
+              </tr>
+              <tr>
+                <th scope="row"/>11</th>
+                <td style="color:#cc0000; font-weight: bold;"/>Corona temporal</td>
+                <td colspan="6"/><b>CT</b></td>
+              </tr>
+              <tr>
+                <th scope="row"/>12</th>
+                <td style=" font-weight: bold;"/>Corona </td>
+                <td><b>CM:</b> Corona Metafilica</td>
+                <td><b>CF:</b> Corona Fenestrada</td>
+                <td><b>CMC:</b> Corona metal cerámica</td>
+                <td><b>CV:</b> Corona Veneer</td>
+                <td colspan="2"/><b>CJ:</b> Corona Jacket</td>
+              </tr>
+              <tr>
+                <th scope="row"/>13</th>
+                <td style=" font-weight: bold;"/>Implante dental</td>
+                <td colspan="6"/><b>IMP</b></td>
+              </tr>
+              <tr>
+                <th scope="row"/>14</th>
+                <td style="color:#094293; font-weight: bold;"/>Tratamiento pulpar </td>
+                <td><b>TC:</b> Tratamiento de conductos/td>
+                <td><b>PC:</b> Pulpectomía</td>
+                <td colspan="4"/><b>PP:</b> Corona metal cerámica</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer"/>
+        <button type="button" class="btn btn-primary" data-dismiss="modal"/>Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal leyenda end -->
+<!--Modal para cada diente -->
+<!-- Diente modal-->
+
+{% for forms in listaForms %}
+
+{% for item in forms %}
+<div class="modal fullscreen-modal fade" id="{{ item.label|lower }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true"/>
+  <div class="modal-dialog" role="document"/>
+    <div class="modal-content"/>
+      
+      <form method="POST"/>
+        {% csrf_token %}
+        <div class="modal-header"/>
+          <h5 class="modal-title" id="exampleModalLabel"/>Seleccione la lesión par el diente []</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"/>
+            <span aria-hidden="true"/>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body"/>
+          <div class="table-responsive"/>
+            <table class="table table-bordered" width="100%" cellspacing="0"/>
+              <thead>
+                <tr>
+                  <th scope="col"/> #</th>
+                  <th scope="col"/>Selección</th>
+                  <th scope="col"/>Simbolo</th>
+                  <th scope="col"/>Nombre de la lesión</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for field in item %}
+                  <label for="{{ field.id_for_label }}"/>
+                  <tr>
+                    <th scope="row"/>{{ forloop.counter|add:"1" }}</th>
+                    <td><input type="checkbox" value="{{ field.data.value }}" name="{{ field.data.name }}" id="{{ field.id_for_label }}"/></td>
+                    <td><img style="width: 55px;"src="{% static 'img/ref_dientes/'|add:field.data.value|add:'.svg' %}" alt="tooth" width="30" height="30"/></td>
+                    <td>{{ field.choice_label }}</td>
+                  </tr> 
+                  </label>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="modal-footer"/>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"/>Cerrar</button>
+          <a href="{% url 'pacientes:actualizaOdontograma' itemPaciente.id %}"/>
+            <button type="submit" value="Submit" class="btn btn-primary"/>Guardar</button>
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endfor %}
+<!-- Diente modal end -->
+<!--Modal para cada diente end -->
+
+<!--Container-fluid -->
+<div class="container-fluid"/>
+  <h1 class="h3 mb-2 text-gray-800"/>Paciente: {{ itemPaciente }}</h1>
+  <h4 class="h  text-gray-800"/>Ultima modificación: {{ odontograma.dUltFecActualizacion }}</h4><br>
+
+  <div class="card shadow mb-4"/>
+    <div class="card-header py-3"/>
+      <h6 class="m-0 font-weight-bold text-primary"/>Odontograma MINSA 2021</h6>
+    </div>
+    <div class="card-body"/>
+      <div class="button_legend"/>
+        <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#leyenda"
+          style="margin-top:-60px;"/>
+          <span class="icon text-white-50"/>
+            <i class="fas fa-eye"/></i>
+          </span>
+          <span class="text"/>Ver leyenda</span>
+        </a><br>
+      </div>
+      <center>
+        <div class="form-row col-11 center-block"/>
+          <div class="table-responsive"/>
+            <table class="table text-center center-block"/>
+              <tbody>
+                <!--lesiones 18-28-->
+                <tr>
+                  <!-- <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td> -->
+                <tr>
+                  <!--lesiones 18-28 end -->
+                  <!--dientes 18-28-->
+                <tr>
+                  <td>18
+                    <a href="" data-toggle="modal" data-target="#ct18"/>
+                      <img style="width: 55px;"style="width: 55px;" src="{% static 'img/dientes/18.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT18 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>17
+                    <a href="" data-toggle="modal" data-target="#ct17"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/17.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT17 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>16
+                    <a href="" data-toggle="modal" data-target="#ct16"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/16.svg' %}" alt="xD"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT16 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>15
+                    <a href="" data-toggle="modal" data-target="#ct15"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/15.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT15 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>14
+                    <a href="" data-toggle="modal" data-target="#ct14"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/14.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT14 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>13
+                    <a href="" data-toggle="modal" data-target="#ct13"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/13.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT13 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>12
+                    <a href="" data-toggle="modal" data-target="#ct12"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/12.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT12 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>11
+                    <a href="" data-toggle="modal" data-target="#ct11"/>
+                      <img style="width: 55px;"style="z-index : 0;" src="{% static 'img/dientes/11.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT11 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>21
+                    <a href="" data-toggle="modal" data-target="#ct21"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/21.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT21 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>22
+                    <a href="" data-toggle="modal" data-target="#ct22"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/22.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT22 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>23
+                    <a href="" data-toggle="modal" data-target="#ct23"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/23.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT23 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>24
+                    <a href="" data-toggle="modal" data-target="#ct24"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/24.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT24 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>25
+                    <a href="" data-toggle="modal" data-target="#ct25"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/25.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT25 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>26
+                    <a href="" data-toggle="modal" data-target="#ct26"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/26.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT26 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>27
+                    <a href="" data-toggle="modal" data-target="#ct27"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/27.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT27 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>28
+                    <a href="" data-toggle="modal" data-target="#ct28"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/28.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT28 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                </tr>
+                <!--dientes 18-28 end-->
+                <!--lesiones 55-65-->
+                <tr>
+                  <!-- <td>
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                  </td> -->
+                <tr>
+                  <!--lesiones 55-65 end -->
+                  <!--dientes 55-65 end -->
+                <tr>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                  <td>55
+                    <a href="" data-toggle="modal" data-target="#ct55"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/55.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT55 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>54
+                    <a href="" data-toggle="modal" data-target="#ct54"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/54.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT54 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>53
+                    <a href="" data-toggle="modal" data-target="#ct53"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/53.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT53 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>52
+                    <a href="" data-toggle="modal" data-target="#ct52"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/52.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT52 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>51
+                    <a href="" data-toggle="modal" data-target="#ct51"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/51.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT51 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>61
+                    <a href="" data-toggle="modal" data-target="#ct61"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/61.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT61 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>62
+                    <a href="" data-toggle="modal" data-target="#ct62"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/62.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT62 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>63
+                    <a href="" data-toggle="modal" data-target="#ct63"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/63.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT63 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                    </a>
+                  </td>
+                  <td>64
+                    <a href="" data-toggle="modal" data-target="#ct64"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/64.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT64 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>65
+                    <a href="" data-toggle="modal" data-target="#ct65"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/65.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT65 %}
+                        <img style="width: 55px;"class="dienteestado1"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}
+                    </a>
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <!--dientes 55-65 end -->
+                <!--dientes 85-75 end -->
+                <tr>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct85"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/85.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT85 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %} </a>
+                    85
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct84"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/84.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT84 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %} </a>
+                    84
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct83"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/83.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT83 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %} </a>
+                    83
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct82"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/82.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT82 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    82
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct81"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/81.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT81 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    81
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct71"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/71.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT71 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    71
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct72"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/72.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT72 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    72
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct73"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/73.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT73 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    73
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct74"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/74.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT74 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    74
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct75"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/75.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT75 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    75
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <!--dientes 85-75 end -->
+                <!--lesiones 85-75-->
+                <tr>
+                  <!-- <td>
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                  </td> -->
+                <tr>
+                  <!--lesiones 85-75 end -->
+                  <!--dientes 48-38  -->
+                <tr>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct48"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/48.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT48 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    48
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct47"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/47.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT47 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    47
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct46"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/46.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT46 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    46
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct45"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/45.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT45 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    45
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct44"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/44.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT44 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    44
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct43"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/43.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT43 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    43
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct42"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/42.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT42 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    42
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct41"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/41.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT41 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    41
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct31"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/31.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT31 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    31
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct32"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/32.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT32 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    32
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct33"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/33.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT33 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    33
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct34"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/34.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT34 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    34
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct35"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/35.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT35 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    35
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct36"/>
+                      <img style="width: 55px;"class="diente2" src="{% static 'img/dientes/36.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT36 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    38
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct37"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/37.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT37 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    37
+                  </td>
+                  <td>
+                    <a href="" data-toggle="modal" data-target="#ct38"/>
+                      <img style="width: 55px;"src="{% static 'img/dientes/38.svg' %}"/>
+                      {% for estado in listaEstado %}
+                        {% if estado in odontograma.cT38 %}
+                        <img style="width: 55px;"class="dienteestado2"
+                          src="{% static "img/ref_dientes/"|add:estado|add:".svg" %}"/>
+                        {% endif %}
+                      {% endfor %}</a>
+                    38
+                  </td>
+                </tr>
+                <!--dientes 48-38  end -->
+                <!--lesiones 48-38-->
+                <tr>
+                  <!-- <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"/>
+                  </td> -->
+                <tr>
+                  <!--lesiones 48-38 end -->
+              </tbody>
+            </table>
+          </div>
+      </center>
+      <center>
+        <div class="form-row col-8"/>
+          <div class="form-group col-md"/>
+            <label>Especificaciones</label>
+            <textarea class="form-control"/></textarea>
+          </div>
+        </div>
+        <div class="form-row col-8"/>
+          <div class="form-group col-md"/>
+            <label>Observaciones</label>
+            <textarea class="form-control"/></textarea>
+          </div>
+        </div>
+        <center> <button type="submit" class="btn btn-primary mb-2"/>Guardar</button></center>
+      </center>
+    </div>
+  </div>
+</div>
+
+<!--Container-fluid end-->
+
+
+{% endblock %}

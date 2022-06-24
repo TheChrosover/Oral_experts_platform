@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}Nuevo Usuario{% endblock %}
+
+{% block registrar-activo %}active{% endblock %}
+
+{% block body %}
+<style>
+    @media (min-width: 1200px) {
+        .container,
+        .container-sm,
+        .container-md,
+        .container-lg,
+        .container-xl {
+            max-width: 1340px;
+        }
+    }
+</style>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+    
+            reader.onload = function (e) {
+                $('#myimage').attr('src', e.target.result);
+            };
+    
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    </script>
+<div class="container-fluid">
+    <a href="{% url 'pacientes:listaPaciente' %}" class="btn btn-info btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-eye"></i>
+        </span>
+        <span class="text">Lista de pacientes</span>
+    </a><br><br>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Nuevo Paciente</h6>
+        </div>
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-auto">
+                        <div class="form-group col-md">
+                            <form class="user" enctype="multipart/form-data" method="POST">
+                                {% csrf_token %}
+                                <center>
+                                    <img class="rounded-circle border border-primary" alt=":)"
+                                    id="myimage" src="{% static 'img/perfil_defecto.png' %}" width="150px" height="150px"
+                                        data-holder-rendered="true">
+                                </center><br>
+                                
+
+                                <div class="input-group mb-3">
+                                    <div class="custom-file">
+                                        {{ frmPaciente.iPacImg }}
+                                        <label class="custom-file-label" for="inputGroupFile01">Elegir imagen...</label>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Nombres y apellidos</label>
+                                {{ frmPaciente.cPacNombres }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label>Correo electrónico</label>
+                                {{ frmPaciente.cPacEmail }}
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>DNI</label>
+                                {{ frmPaciente.nPacDni }}
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Dirección</label>
+                                {{ frmPaciente.cPacDireccion }}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Código postal</label>
+                                {{ frmPaciente.nPacCodPostal }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label>Ciudad de nacimiento</label>
+                                {{ frmPaciente.cPacCiudadNacimiento }}
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Fecha de nacimiento</label>
+                                {{ frmPaciente.dPacFecNacimiento }}
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Sexo</label>
+                                {{ frmPaciente.cPacSexo }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Ocupación</label>
+                                {{ frmPaciente.cPacOcupacion }}
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Estado civil</label>
+                                {{ frmPaciente.cPacEstadoCivil }}
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="inputZip">Teléfono/celular</label>
+                                {{ frmPaciente.nPacCelTlf }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <!-- <div class="form-group col-md-6">
+                                            <label>Grado de estudios</label>
+                                            {{ frmPaciente.cPacNombres }}
+                                            </div> -->
+                            <div class="form-group col-md-12">
+                                <label>Alergias</label>
+                                {{ frmPaciente.cPacAlergia }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label>Nombres y apellidos del acompañante</label>
+                                {{ frmPaciente.cNombresApoderado }}
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Teléfono del acompañante</label>
+                                {{ frmPaciente.nTelfApoderado }}
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-user btn-block">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

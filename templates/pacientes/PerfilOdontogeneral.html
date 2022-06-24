@@ -1,0 +1,122 @@
+{% extends 'pacientes/base.html' %}
+
+
+{% block titulo %}Odontología General{% endblock %}
+
+{% block especialidades-activo %}active{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <h1 class="h3 mb-2 text-gray-800">Paciente: {{ itemPaciente  }}</h1><br>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Consulta Ondontolgía General N°</h6>
+        </div>
+        <div class="card-body">
+            <form class="user" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+
+                    <h3>Aspectos Generales </h3>
+                    <br>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label>Fecha de la consulta</label>
+                            {{ frmOdGeneral.dOdontGeneralFecha }}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label>Motivo de Consulta</label>
+                            {{ frmOdGeneral.tMotivoConsulta }}
+                        </div>
+                        <div class="form-group col-md">
+                            <label>Enfermedad Actual</label>
+                            {{ frmOdGeneral.cEnfermedadActual }}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label>Medicina Actual</label>
+                            {{ frmOdGeneral.tMedicaActual }}
+                        </div>
+                        <div class="form-group col-md">
+                            <label>Tiempo de la Enfermedad</label>
+                            {{ frmOdGeneral.cTiempoEnfermedad }}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label>Sintomas</label>
+                            {{ frmOdGeneral.cSignosSintomas }}
+                        </div>
+                        <div class="form-group col-md">
+                            <label>Relato Cronológico</label>
+                            {{ frmOdGeneral.tRelatoCrono }}
+                        </div>
+                    </div>
+                    <br>
+                    <h3>Antecedentes Cronológicos </h3>
+                    <br>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label>Antecedentes Familiares</label>
+                            {{ frmOdGeneral.tAnteceFamiliar }}
+                        </div>
+                        <div class="form-group col-md">
+                            <label>Antecedentes Personales</label>
+                            {{ frmOdGeneral.tAntecePersonal }}
+                        </div>
+                    </div>
+                    <br>
+                    <h3>Examen actual</h3>
+                    <br>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label>Examen General</label>
+                            {{ frmOdGeneral.tExamenGeneral }}
+                        </div>
+                        <div class="form-group col-md">
+                            <label>Examen Estomatológico</label>
+                            {{ frmOdGeneral.tExamenOdontEstoma }}
+                        </div>
+                    </div>
+                    <br>
+                    <h3>Tipos de Diagnósticos</h3>
+                    <br>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label>Diagnóstico Definitivo</label>
+                            {{ frmOdGeneral.tDiagDefinitivo }}
+                        </div>
+                        <div class="form-group col-md">
+                            <label>Diagnóstico Presuntivo</label>
+                            {{ frmOdGeneral.tDiagPresuntivo }}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label>Plan de Tratamiento</label>
+                            {{ frmOdGeneral.tPlanTratamiento }}
+                        </div>
+                        <div class="form-group col-md">
+                            <label>Recomendaciones</label>
+                            {{ frmOdGeneral.tRecomendacion }}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label>Alta del Paciente</label>
+                            {{ frmOdGeneral.tAlta }}
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-user btn-block">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

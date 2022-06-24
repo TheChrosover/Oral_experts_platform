@@ -1,0 +1,190 @@
+{% extends 'pacientes/base.html' %}
+
+{% block titulo %}|Plan de Tratamiento{% endblock %}
+
+{% block planTrat-activo %}active{% endblock %}
+
+{% block body %}
+<!--modal eliminar-->
+<div class="modal fade" id="modal-eliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Advertencia</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ¿Desea eliminar al paciente ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--modal eliminar end-->
+<div class="container-fluid">
+<!--Container-fluid -->
+
+ <!-- Nueva plan Button modal-->
+                    <h1 class="h3 mb-2 text-gray-800">Paciente: {{ itemPaciente  }}</h1><br>
+                     <a href=" " class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#staticBackdrop">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        <span class="text">Agregar plan de tratamiento</span>
+                    </a><br><br>
+                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Nuevo plan de tratamiento</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                            {% csrf_token %}
+                                  <div class="form-row">
+                                    <div class="form-group col-md">
+                                        <label>Fecha del plan</label>
+                                        {{ frmPlan.dPlnFechaTrat }}
+                                    </div>
+                                    <div class="form-group col-md">
+                                        <label for="inputState">Tratamientos</label>
+                                        {{ frmPlan.fkTratamiento }}
+                                    </div>
+                                 </div>
+                                <div class="form-row">
+                                  <div class="form-group col-md">
+                                      <label>Nombre del plan de tratamiento</label>
+                                        {{ frmPlan.cPlnNomTrat }}
+                                  </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md">
+                                        <label>Observación</label>
+                                        {{ frmPlan.cPlnObservacion }}
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary">Guardar</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+<!-- Nuevo plan Button modal end-->
+ <!-- Ver plan  Button modal -->
+                    <div class="modal fade" id="vertrat" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Plan de tratamiento</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                            {% csrf_token %}
+                                  <div class="form-row">
+                                    <div class="form-group col-md">
+                                        <label>Fecha del plan</label>
+                                        {{ frmPlan.dPlnFechaTrat }}
+                                    </div>
+                                    <div class="form-group col-md">
+                                        <label for="inputState">Tratamientos</label>
+                                        {{ frmPlan.fkTratamiento }}
+                                    </div>
+                                 </div>
+                                <div class="form-row">
+                                  <div class="form-group col-md">
+                                      <label>Nombre del plan de tratamiento</label>
+                                        {{ frmPlan.cPlnNomTrat }}
+                                  </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md">
+                                        <label>Observación</label>
+                                        {{ frmPlan.cPlnObservacion }}
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary">Guardar</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+ <!-- Ver plan Button modal end-->
+<!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Lista de recetas</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead class="text-center">
+                                        <tr>
+                                            <th>N°</th>
+                                            <th>Fecha</th>
+                                            <th>Tratamiento</th>
+                                            <th>Nombre del plan de tratamiento</th>
+                                            <th>Observación</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot class="text-center">
+                                        <tr>
+                                        <th>N°</th>
+                                        <th>Fecha</th>
+                                        <th>Tratamiento</th>
+                                        <th>Nombre del plan de tratamiento</th>
+                                        <th>Observación</th>
+                                        <th></th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody class="text-center">
+                                    {% for item in PlanTratamiento %}
+                                        <tr>
+                                            <td>{{ item.pk  }}</td>
+                                            <td>{{ item.dPlnFechaTrat  }}</td>
+                                            <td>{{ item.fkTratamiento  }}</td>
+                                            <td>{{ item.cPlnNomTrat  }}</td>
+                                            <td>{{ item.cPlnObservacion  }}</td>
+                                            <td>
+                                                <a href="#" class="btn btn-info btn-icon-split"  data-toggle="modal" data-target="#vertrat">
+                                                     <span class="icon text-white-50">
+                                                        <i class="fas fa-info-circle"></i>
+                                                    </span>
+                                                   
+                                                 </a>
+
+                                                 <a href="#" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#modal-eliminar">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-trash"></i>
+                                                     </span>
+                                                    
+                                                 </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+<!-- /.container-fluid -->
+{% endblock %}

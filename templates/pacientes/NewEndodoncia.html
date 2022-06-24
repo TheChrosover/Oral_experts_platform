@@ -1,0 +1,183 @@
+{% extends 'pacientes/base.html' %}
+
+
+{% block titulo %}Endodoncia{% endblock %}
+
+{% block especialidades-activo %}active{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+<h1 class="h3 mb-2 text-gray-800">Paciente: {{ itemPaciente  }}</h1><br>
+ <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Endodoncia</h6>
+                        </div>
+                        <div class="card-body">
+                         <form class="user" method="POST">
+                            {% csrf_token %}
+                                                    <br><h3>Aspectos generales </h3><br>
+                                                    <div class="form-group">
+                                                        <div class="form-group">
+                                                        <label>Fecha </label>
+                                                         {{ frmEndodoncia.dEndoFecha }}
+                                                        </div>
+                                                    </div>
+                                                   <!--definir los datos-->
+                                                   <br><h3>Sistomatología</h3><br>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                            <label>¿Hay dolor?</label>
+                                                            <div class="form-check">
+                                                             {{ frmEndodoncia.cEndoDolor }}
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                   
+                                                    <br><h3>Examen Clínico</h3><br>
+                                                    {% comment %} <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Tipo</label>
+                                                        <br>
+
+                                                        </div>
+                                                    </div> {% endcomment %}
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Repuesta al frío</label>
+                                                        <br>
+                                                        
+                                                         {{ frmEndodoncia.cEndoFrio }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Repuesta al calor</label>
+                                                        <br>
+                                                        {{ frmEndodoncia.cEndoCalor }}
+                                                        </div>
+                                                    </div>
+                                                    <br><h4>Examen Radiográfico </h4><br>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Anatomia Radicular</label>
+                                                        <br>
+                                                        {{ frmEndodoncia.cAnatoRadOtros }}
+                                                        </div>
+                                                       
+                                                        
+                                                    </div>
+
+                                                    <br><h3>Diagnóstico, pronóstico, plan de tratamiento</h3><br>
+                                                   
+                                                     <!--Datos 2-->
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Fecha</label>
+                                                        {{ frmEndodoncia.dEndoDiagFecha }}
+                                                        </div>
+
+                                                        <div class="form-group col-md">
+                                                        <label>Diente</label>
+                                                        {{ frmEndodoncia.tEndoDiente }}
+                                                        </div>
+                                                    </div>
+
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Diagnóstico</label>
+                                                        {{ frmEndodoncia.tEndoDiagnostico }}
+                                                        </div>
+
+                                                        <div class="form-group col-md">
+                                                        <label>Pronóstico</label>
+                                                        {{ frmEndodoncia.tEndoPronostico }}
+                                                        </div>
+                                                    </div>
+
+                                                     <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Plan de tratamiento</label>
+                                                        {{ frmEndodoncia.tEndoPlan }}
+                                                        </div>
+                                                    </div>
+                                                     <!--tabla 2-->
+                                                    <div class="form-row">
+                                                        
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                                <tr>
+                                                                <th scope="col">Conducto</th>
+                                                                <th scope="col">Conduct. Tent.</th>
+                                                                <th scope="col">Conduct. Def.</th>
+                                                                <th scope="col">Punto de Referencia</th>
+                                                                <th scope="col">L.A.P.</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>{{ frmEndodoncia.cConducto }}</td>
+                                                                    <td>{{ frmEndodoncia.cConducTent }}</td>
+                                                                    <td>{{ frmEndodoncia.cConducDef }}</td>
+                                                                    <td>{{ frmEndodoncia.cPuntReher }}</td>
+                                                                    <td>{{ frmEndodoncia.cLAP }}</td>
+                                                                </tr>
+                                                                  <tr>
+                                                                    <td>{{ frmEndodoncia.cConducto }}</td>
+                                                                    <td>{{ frmEndodoncia.cConducTent }}</td>
+                                                                    <td>{{ frmEndodoncia.cConducDef }}</td>
+                                                                    <td>{{ frmEndodoncia.cPuntReher }}</td>
+                                                                    <td>{{ frmEndodoncia.cLAP }}</td>
+                                                                </tr>
+                                                                  <tr>
+                                                                    <td>{{ frmEndodoncia.cConducto }}</td>
+                                                                    <td>{{ frmEndodoncia.cConducTent }}</td>
+                                                                    <td>{{ frmEndodoncia.cConducDef }}</td>
+                                                                    <td>{{ frmEndodoncia.cPuntReher }}</td>
+                                                                    <td>{{ frmEndodoncia.cLAP }}</td>
+                                                                </tr>
+                                                                  <tr>
+                                                                    <td>{{ frmEndodoncia.cConducto }}</td>
+                                                                    <td>{{ frmEndodoncia.cConducTent }}</td>
+                                                                    <td>{{ frmEndodoncia.cConducDef }}</td>
+                                                                    <td>{{ frmEndodoncia.cPuntReher }}</td>
+                                                                    <td>{{ frmEndodoncia.cLAP }}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        </div>
+                                                    <div>
+                                        
+                                                    <br><h3>Notas de Evolución</h3><br>
+                                                    <!--Datos 1-->
+                                                    
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Fecha</label>
+                                                        {{ frmEndodoncia.dEndoEvolFecha }}
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Descripción</label>
+                                                        {{ frmEndodoncia.tEndoEvolDescrip }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md">
+                                                        <label>Control</label>
+                                                        {{ frmEndodoncia.tEndoControl }}
+                                                        </div>
+                                                    </div>
+                                                                        
+                        <button type="submit" class="btn btn-primary btn-user btn-block">Guardar</button>
+                    </form>
+                    </div>
+                    </div>
+                        </div>
+</div>
+</div>
+{% endblock %}
